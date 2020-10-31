@@ -2,20 +2,20 @@
 """
 Created on Tue Oct 27 20:37:29 2020
 
-@author: hp
+@author: aniket wattamwar
 """
 
 import streamlit as st
 from PIL import Image
 import cv2 
 import numpy as np
+
+
+
 def main():
-    
-     
-    
-    # Add a selectbox to the sidebar:
+
     selected_box = st.sidebar.selectbox(
-    'How would you like to be contacted?',
+    'Choose one of the following',
     ('Welcome','Image Processing', 'Video', 'Face Detection', 'Feature Detection', 'Object Detection')
     )
     
@@ -33,13 +33,6 @@ def main():
         object_detection() 
  
 
-#def load_image(url):
-##    with urllib.request.urlopen(url) as response:
-##        image = np.asarray(bytearray(response.read()), dtype="uint8")
-#    image = cv2.imdecode(image, cv2.IMREAD_COLOR)
-#    image = image[:, :, [2, 1, 0]] # BGR -> RGB
-#    return image
-
 def welcome():
     
     st.title('Image Processing using Streamlit')
@@ -48,8 +41,7 @@ def welcome():
              + ' from the left. I have implemented only a few to show how it works on Streamlit. ' + 
              'You are free to add stuff to this app.')
     
-    st.image('hackershrine.jpg',use_column_width=True,clamp=True)
-#    st.url_util('https://docs.streamlit.io/en/stable/api.html#magic-commands')
+    st.image('hackershrine.jpg',use_column_width=True)
 
 
 def load_image(filename):
@@ -57,12 +49,14 @@ def load_image(filename):
     return image
  
 def photo():
-    
+
+    st.header("Thresholding, Edge Detection and Contours")
     
     if st.button('See Original Image of Tom'):
         
         original = Image.open('tom.jpg')
         st.image(original, use_column_width=True)
+        
     image = cv2.imread('tom.jpg')
     image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     
@@ -116,6 +110,8 @@ def video():
 
 def face_detection():
     
+    st.header("Face Detection using haarcascade")
+    
     if st.button('See Original Image'):
         
         original = Image.open('friends.jpeg')
@@ -123,7 +119,7 @@ def face_detection():
     
     
     image2 = cv2.imread("friends.jpeg")
-#    image_gray = cv2.cvtColor(image2, cv2.COLOR_BGR2GRAY)
+
     face_cascade = cv2.CascadeClassifier("haarcascade_frontalface_default.xml")
     faces = face_cascade.detectMultiScale(image2)
     print(f"{len(faces)} faces detected in the image.")
@@ -131,7 +127,7 @@ def face_detection():
         cv2.rectangle(image2, (x, y), (x + width, y + height), color=(255, 0, 0), thickness=2)
     
     cv2.imwrite("faces.jpg", image2)
-#    image2 = image2.astype(np.float64)
+    
     st.image(image2, use_column_width=True,clamp = True)
  
 
