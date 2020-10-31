@@ -1,5 +1,5 @@
 plotly
 matplotlib
 scipy
-opencv
+opencv-python
 PIL
