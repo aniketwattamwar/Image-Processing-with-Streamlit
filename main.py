@@ -11,9 +11,6 @@ import cv2
 #print( "OpenCV version :  {0}".format(cv2.__version__))
 
 import numpy as np
-import pandas as pd
-import matplotlib.pyplot as plt
-from io import StringIO
 def main():
     
      

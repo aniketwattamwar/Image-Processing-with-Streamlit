@@ -1,5 +1,4 @@
-plotly
-matplotlib
-scipy
 opencv-python
 PIL
+numpy
+streamlit>0.66
