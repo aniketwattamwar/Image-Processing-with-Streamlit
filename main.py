@@ -7,9 +7,7 @@ Created on Tue Oct 27 20:37:29 2020
 
 import streamlit as st
 from PIL import Image
-import cv2
-#print( "OpenCV version :  {0}".format(cv2.__version__))
-
+import cv2 
 import numpy as np
 def main():
     

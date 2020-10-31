@@ -1,4 +1,4 @@
-opencv-python
+opencv-python>=3.4.0.12
 PIL
 numpy
 streamlit>0.66
